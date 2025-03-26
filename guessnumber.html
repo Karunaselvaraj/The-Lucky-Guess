@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Guessing Game</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f3f4f6;
+        }
+
+        .container {
+            text-align: center;
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 40px;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+            width: 400px;
+        }
+
+        h1 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #374151;
+        }
+
+        input[type="text"] {
+            width: 90%;
+            padding: 12px;
+            margin-bottom: 15px;
+            font-size: 18px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            outline: none;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        input[type="text"]:focus {
+            border-color: #3b82f6;
+            box-shadow: 0px 4px 12px rgba(59, 130, 246, 0.3);
+        }
+
+        button {
+            background-color: #8db5f4;
+            color: rgb(0, 0, 0);
+            font-size: 18px;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #9dffd3;
+        }
+
+        #wr {
+            font-size: 20px;
+            margin-top: 15px;
+            color: #4b5563;
+        }
+
+        #score {
+            font-size: 20px;
+            margin-top: 15px;
+            color: #10b981;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Guess the Number</h1><br>
+        <input type="text" id="num" placeholder="Enter a number (0-9)">
+        <br><br>
+        <button onclick="check()">Check</button>
+        <p id="wr"></p>
+        <h3 id="score"></h3>
+    </div>
+
+    <script>
+        var minus = 10;
+        var r = Math.random();
+        r = Math.floor(r * 10);
+        console.log(r);
+
+        function check() {
+            var a = document.getElementById("num");
+            var ans = document.getElementById("wr");
+            var s = document.getElementById("score");
+
+            if (r == a.value) {
+                ans.textContent = "🎉 Correct !";
+                ans.style.color = "#10b981";
+                alert("WON");
+            } else {
+                ans.textContent = "❌ Incorrect. Try again !";
+                ans.style.color = "#ef4444";
+                s.textContent = "Score: " + minus;
+                minus--;
+
+                if (minus < 0) {
+                    alert("Game Over! The correct number was " + r);
+                }
+            }
+        }
+    </script>
+</body>
+</html>
